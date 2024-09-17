@@ -1,5 +1,6 @@
 <?php
-    session_start()
+
+     session_start();
     $dsn = 'mysql:host=localhost;dbname=contact_manager';
     $username = 'root';
     $password = '';
