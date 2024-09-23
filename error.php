@@ -15,7 +15,9 @@ session_start();
 <div>
     <p>
         Error message: <?php echo $_SESSION["error_message"] ?>
+
     </p>
+    <p><a href="add_contact_form.php">Try again</a></p>
 </div>
     <p><a href="index.php"></a></p>
     </main>

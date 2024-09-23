@@ -33,8 +33,8 @@
             <th>Last name</th>
             <th>Email address</th>
             <th>phone No</th>
-            <th>&nbsp;</th> <!-- empty cell for the edit button -->
-            <th>&nbsp;</th> <!-- empty cell for the delete button -->
+            <th>&nbsp;</th> 
+            <th>&nbsp;</th> 
         
         </tr>
         <?php foreach ($contacts as $contact) : ?>
@@ -43,8 +43,17 @@
             <td><?php echo $contact['lastName']; ?></td>
             <td><?php echo $contact['email']; ?></td>
             <td><?php echo $contact['phone']; ?></td>
-            <td></td> <!-- empty cell for the edit button -->
-            <td></td> <!-- empty cell for the delete button -->
+            <td>
+                <form action="edit_contact_form.php" method="post">
+                    <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+            <td><form action="delete_contact.php" method="post">
+                    <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">
+                    <input type="submit" value="Delete">
+                </form>
+            </td> 
         </tr>
         <?php endforeach; ?>
     </table>
