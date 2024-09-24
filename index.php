@@ -1,4 +1,5 @@
 <?php
+
     require('database.php');
     $queryContacts = 'SELECT * FROM contacts';
     $statement1 = $db->prepare($queryContacts);
@@ -44,9 +45,9 @@
             <td><?php echo $contact['email']; ?></td>
             <td><?php echo $contact['phone']; ?></td>
             <td>
-                <form action="edit_contact_form.php" method="post">
+                <form action="update_contact_form.php" method="post">
                     <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">
-                    <input type="submit" value="Edit">
+                    <input type="submit" value="Update">
                 </form>
             </td>
             <td><form action="delete_contact.php" method="post">
@@ -57,6 +58,8 @@
         </tr>
         <?php endforeach; ?>
     </table>
+
+
 </div>
 <p><a href="add_contact_form.php">Add Contact</a></p>
     </main>
@@ -65,3 +68,5 @@
     ?>
 </body>
 </html>
+
+

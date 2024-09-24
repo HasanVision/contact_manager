@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    $contact_id = filter_input(INPUT_POST, 'contact_id', FILTER_VALIDATE_INT);
     // Get the contact data from the form 
     $first_name = filter_input(INPUT_POST, 'first_name');
     $last_name = filter_input(INPUT_POST, 'last_name');
@@ -15,13 +15,16 @@
         die();
     } else {
         require_once('database.php');
-        $query = 'INSERT INTO contacts
-                     (firstName, lastName, email, phone)
-                  VALUES
-                     (:first_name, :last_name, :email, :phone)';
+        $query = 'UPDATE contacts
+                    SET firstName = :firstName,
+                        lastName = :lastName,
+                        email = :email,
+                        phone = :phone
+                    WHERE contactID = :contact_id';
         $statement = $db->prepare($query);
-        $statement->bindValue(':first_name', $first_name);
-        $statement->bindValue(':last_name', $last_name);
+        $statement->bindValue(':contact_id', $contact_id);
+        $statement->bindValue(':firstName', $first_name);
+        $statement->bindValue(':lastName', $last_name);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':phone', $phone);
         $statement->execute();
@@ -29,11 +32,13 @@
 
         // Display the contact List page
         include('index.php');
+
     }
     $_SESSION['full_name'] = $first_name . ' ' . $last_name;
 
     // redirect to the confirmation page
-    $url = 'confirmation.php';
+    $url = 'update_confirmation.php';
     header('Location: ' . $url);
     die();
+
 ?>

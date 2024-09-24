@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
     require_once('database.php');
     // Get the contact data from the form 
     $contact_id = filter_input(INPUT_POST, 'contact_id', FILTER_VALIDATE_INT);
@@ -23,4 +24,6 @@
     // $url = 'index.php';
     // header('Location: ' . $url);
     // die();
+
 ?>
+

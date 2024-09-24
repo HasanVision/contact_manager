@@ -25,7 +25,7 @@
                 <label>Phone No:</label>
                 <input type="text" name="phone" ><br>
                 <label>&nbsp;</label>
-                <input type="submit" value="Add Contact"><br>
+        
             </div>
             <div id="buttons">
             <label>&nbsp;</label>
