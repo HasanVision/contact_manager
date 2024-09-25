@@ -24,6 +24,9 @@
                 <input type="email" name="email" required><br>
                 <label>Phone No:</label>
                 <input type="text" name="phone" ><br>
+                <label>Status</label>
+                <input type="radio" name="status" value="member" >Member</br>
+                <input type="radio" name="status" value="noneMember" checked >None Member</br>
                 <label>&nbsp;</label>
         
             </div>

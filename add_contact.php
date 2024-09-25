@@ -6,6 +6,7 @@
     $last_name = filter_input(INPUT_POST, 'last_name');
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
+    $status = filter_input(INPUT_POST, 'status');
 
     // save the contact data to the database
     if ($first_name == null || $last_name == null || $email == null || $phone == null ) {
@@ -16,14 +17,15 @@
     } else {
         require_once('database.php');
         $query = 'INSERT INTO contacts
-                     (firstName, lastName, email, phone)
+                     (firstName, lastName, email, phone, status)
                   VALUES
-                     (:first_name, :last_name, :email, :phone)';
+                     (:first_name, :last_name, :email, :phone, :status)';
         $statement = $db->prepare($query);
         $statement->bindValue(':first_name', $first_name);
         $statement->bindValue(':last_name', $last_name);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':phone', $phone);
+        $statement->bindValue(':status', $status);
         $statement->execute();
         $statement->closeCursor();
 
