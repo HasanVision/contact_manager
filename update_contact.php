@@ -10,7 +10,7 @@
     $dob = filter_input(INPUT_POST, 'dob');
 
     // save the contact data to the database
-    if ($first_name == null || $last_name == null || $email == null || $phone == null ) {
+    if ($first_name == null || $last_name == null || $email == null || $phone == null || $dob == null) {
         $_SESSION['error_message'] = "Invalid contact data. Check all fields and try again.";
         $url = 'error.php';
         header('Location: ' . $url);
