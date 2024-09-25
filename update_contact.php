@@ -9,6 +9,22 @@
     $status = filter_input(INPUT_POST, 'status');
     $dob = filter_input(INPUT_POST, 'dob');
 
+    require_once('database.php');
+    $queryContacts = 'SELECT * FROM contacts';
+    $statement1 = $db->prepare($queryContacts);
+    $statement1->execute();
+    $contacts = $statement1->fetchAll();
+    $statement1->closeCursor();
+
+    foreach ($contacts as $contact) {
+        if ($contact['email'] == $email && $contact['contactID'] != $contact_id) {
+            $_SESSION['error_message'] = "Email already exists. Please enter a different email.";
+            $url = 'error.php';
+            header('Location: ' . $url);
+            die();
+        }
+    }
+
     // save the contact data to the database
     if ($first_name == null || $last_name == null || $email == null || $phone == null || $dob == null) {
         $_SESSION['error_message'] = "Invalid contact data. Check all fields and try again.";
