@@ -38,6 +38,8 @@ require_once('database.php');
                 <label>Status</label>
                 <input type="radio" name="status" value="member" <?php echo ($contact['status'] == 'member') ? 'checked' : ''; ?> />Member</br>
                 <input type="radio" name="status" value="noneMember" <?php echo ($contact['status'] == 'noneMember') ? 'checked' : ''; ?> />Non-member</br>
+                <label>Date of birth:</label>
+                <input type="date" name="dob" value="<?php echo $contact['dob']; ?>" ><br>
                 <label>&nbsp;</label>
             </div>
             <div id="buttons">

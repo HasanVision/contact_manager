@@ -35,6 +35,7 @@
             <th>Email address</th>
             <th>phone No</th>
             <th>Status</th>
+            <th>Date of birth</th>
             <th>&nbsp;</th> 
             <th>&nbsp;</th> 
         
@@ -46,6 +47,7 @@
             <td><?php echo $contact['email']; ?></td>
             <td><?php echo $contact['phone']; ?></td>
             <td><?php echo $contact['status']; ?></td>
+            <td><?php echo $contact['dob']; ?></td>
             <td>
                 <form action="update_contact_form.php" method="post">
                     <input type="hidden" name="contact_id" value="<?php echo $contact['contactID']; ?>">

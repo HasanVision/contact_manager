@@ -7,9 +7,10 @@
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
     $status = filter_input(INPUT_POST, 'status');
+    $dob = filter_input(INPUT_POST, 'dob');
 
     // save the contact data to the database
-    if ($first_name == null || $last_name == null || $email == null || $phone == null ) {
+    if ($first_name == null || $last_name == null || $email == null || $phone == null || $dob == null) {
         $_SESSION['error_message'] = "Invalid contact data. Check all fields and try again.";
         $url = 'error.php';
         header('Location: ' . $url);
@@ -17,15 +18,17 @@
     } else {
         require_once('database.php');
         $query = 'INSERT INTO contacts
-                     (firstName, lastName, email, phone, status)
+                     (firstName, lastName, email, phone, status, dob)
                   VALUES
-                     (:first_name, :last_name, :email, :phone, :status)';
+                     (:first_name, :last_name, :email, :phone, :status, :dob)';
         $statement = $db->prepare($query);
         $statement->bindValue(':first_name', $first_name);
         $statement->bindValue(':last_name', $last_name);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':phone', $phone);
         $statement->bindValue(':status', $status);
+        $statement->bindValue(':dob', $dob);
+
         $statement->execute();
         $statement->closeCursor();
 

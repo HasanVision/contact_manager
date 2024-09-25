@@ -7,6 +7,7 @@
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
     $status = filter_input(INPUT_POST, 'status');
+    $dob = filter_input(INPUT_POST, 'dob');
 
     // save the contact data to the database
     if ($first_name == null || $last_name == null || $email == null || $phone == null ) {
@@ -21,7 +22,8 @@
                         lastName = :lastName,
                         email = :email,
                         phone = :phone,
-                        status = :status
+                        status = :status,
+                        dob = :dob
                     WHERE contactID = :contact_id';
         $statement = $db->prepare($query);
         $statement->bindValue(':contact_id', $contact_id);
@@ -30,6 +32,7 @@
         $statement->bindValue(':email', $email);
         $statement->bindValue(':phone', $phone);
         $statement->bindValue(':status', $status);
+        $statement->bindValue(':dob', $dob);
         $statement->execute();
         $statement->closeCursor();
 
